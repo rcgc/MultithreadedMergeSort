@@ -11,18 +11,18 @@ public class ParallelMergeSort extends RecursiveAction{
 	// Decides when to fork or compute directly:
     private static final int SORT_THRESHOLD = 128;
  
-    private final int[] values;
-    private final int from;
-    private final int to;
+    private final int[] arr;
+    private final int l;
+    private final int r;
  
-    public ParallelMergeSort(int[] values) {
-        this(values, 0, values.length-1);
+    public ParallelMergeSort(int[] arr) {
+        this(arr, 0, arr.length-1);
     }
  
-    public ParallelMergeSort(int[] values, int from, int to) {
-        this.values = values;
-        this.from = from;
-        this.to = to;
+    public ParallelMergeSort(int[] arr, int l, int r) {
+        this.arr = arr;
+        this.l = l;
+        this.r = r;
     }
  
     public void sort() {
@@ -31,52 +31,58 @@ public class ParallelMergeSort extends RecursiveAction{
  
     @Override
     protected void compute() {
-        if (from < to) {
-            int size = to - from;
+        if (l < r) {
+            int size = r - l;
             if (size < SORT_THRESHOLD) {
                 insertionSort();
             } else {
-                int mid = from + Math.floorDiv(size, 2);
+                int mid = l + Math.floorDiv(size, 2);
                 invokeAll(
-                        new ParallelMergeSort(values, from, mid),
-                        new ParallelMergeSort(values, mid + 1, to));
+                        new ParallelMergeSort(arr, l, mid),
+                        new ParallelMergeSort(arr, mid + 1, r));
                 merge(mid);
             }
         }
     }
  
     private void insertionSort() {
-        for (int i = from+1; i <= to; ++i) {
-            int current = values[i];
+        for (int i = l+1; i <= r; ++i) {
+            int current = arr[i];
             int j = i-1;
-            while (from <= j && current < values[j]) {
-                values[j+1] = values[j--];
+            
+            while (l <= j && current < arr[j]) {
+                arr[j+1] = arr[j--];
             }
-            values[j+1] = current;
+            arr[j+1] = current;
         }
     }
  
     private void merge(int mid) {
-        int[] left = Arrays.copyOfRange(values, from, mid+1);
-        int[] right = Arrays.copyOfRange(values, mid+1, to+1);
-        int f = from;
- 
-        int li = 0, ri = 0;
-        while (li < left.length && ri < right.length) {
-            if (left[li] <= right[ri]) {
-                values[f++] = left[li++];
+    	
+    	/*Copy data to temp arrays*/
+        int[] L = Arrays.copyOfRange(arr, l, mid+1);
+        int[] R = Arrays.copyOfRange(arr, mid+1, r+1);
+        
+        /* Merge the temp arrays */
+        int i = 0, j = 0;
+        int k = l;
+        
+        while (i < L.length && j < R.length) {
+            if (L[i] <= R[j]) {
+                arr[k++] = L[i++];
             } else {
-                values[f++] = right[ri++];
+                arr[k++] = R[j++];
             }
         }
  
-        while (li < left.length) {
-            values[f++] = left[li++];
+        /* Copying remaining elements of L[] if any */
+        while (i < L.length) {
+            arr[k++] = L[i++];
         }
  
-        while (ri < right.length) {
-            values[f++] = right[ri++];
+        /* Copying remaining elements of R[] if any */
+        while (j < R.length) {
+            arr[k++] = R[j++];
         }
     }
-	
 }

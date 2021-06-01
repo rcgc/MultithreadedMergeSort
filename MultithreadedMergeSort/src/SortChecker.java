@@ -2,8 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
 public class SortChecker {
 	private int[] arr;
 	private int n;
@@ -33,17 +31,11 @@ public class SortChecker {
 		}
 		
 		if(flag == true) {
-			
-			JOptionPane.showMessageDialog(null,
-					"The "+n+" integers into sorted.txt were sorted succesfully!",
-					"",
-					JOptionPane.INFORMATION_MESSAGE);
+			System.out.println("The "+n+" integers into sorted.txt were sorted succesfully!\n");
 			
 		}else {
-			JOptionPane.showMessageDialog(null,
-					"The "+n+" integers into sorted.txt were not sorted ascending",
-					"Error",
-					JOptionPane.ERROR_MESSAGE);
+			System.out.println("The "+n+" integers into sorted.txt were not sorted ascending\n");
+
 		}
 	}
 }
