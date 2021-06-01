@@ -1,12 +1,12 @@
 # Multithreaded Merge Sort
 ## Setup instructions
-Text
+In order to run this project into your local machine follow the corresponding instructions to your PC Os:
 
 ### Windows
-Text
+How to import a Github project into eclipse: https://github.com/collab-uniba/socialcde4eclipse/wiki/How-to-import-a-GitHub-project-into-Eclipse
 
 ### Linux
-Text
+Clone the repository and follow the next tutorial to compile and run a java project into linux: https://www.youtube.com/watch?v=CtpPnfU8UdE
 
 ## License & Copyright
 Roberto Carlos Guzmán Cortés
