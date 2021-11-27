@@ -14,5 +14,5 @@ Roberto Carlos Guzmán Cortés
 Licensed under [GPLv3](LICENSE).
 
 ## References
-[1]T. Cormen, Introduction to algorithms, 3rd ed. Cambridge, Mass.: MIT Press, 2009.
+[1]T. Cormen, Introduction to algorithms, 3rd ed. Cambridge, Mass.: MIT Press, 2009.<br>
 [2]A. Silberschatz, P. Galvin and G. Gagne, Operating System Concepts, 9th Edition, 9th ed. Wiley.
