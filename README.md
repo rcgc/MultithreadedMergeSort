@@ -8,6 +8,9 @@ How to import a Github project into eclipse: https://github.com/collab-uniba/soc
 ### Linux
 Clone the repository and follow the next tutorial to compile and run a java project into linux: https://www.youtube.com/watch?v=CtpPnfU8UdE
 
+## Project Report
+https://docs.google.com/document/d/1bybjlG16PhCtmSeOLDL9L9c12K307b6e/edit?usp=sharing&ouid=105684104578290350459&rtpof=true&sd=true
+
 ## License & Copyright
 Roberto Carlos Guzmán Cortés
 
